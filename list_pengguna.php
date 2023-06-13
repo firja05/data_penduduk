@@ -34,9 +34,26 @@
             <a href="edit_pengguna.php?id=<?php echo $row['id']; ?>" class="btn btn-info">
             <i class="bi bi-person-fill-gear"></i> 
             </a>
-            <a href="delete_pengguna.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">
-            <i class="bi bi-trash-fill"></i>
-            </a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['id']; ?>">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                        <div class="modal fade" id="deleteModal<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data Kabupaten</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Apakah Anda yakin ingin menghapus data penduduk pengguna nama: <?php echo $row['nama']; ?>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <a href="delete_pengguna.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Hapus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
           </td>
         </tr>
       <?php
