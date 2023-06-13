@@ -15,5 +15,5 @@ if ($update){
 }else{
     $status = "gagal";
 }
-header("location:kecamatan.php?status=".$status);   
+header("location:edit_kecamatan.php?status=".$status."&id_kecamatan=".$id_kecamatan);   
 ?>
