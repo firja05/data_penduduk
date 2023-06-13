@@ -1,7 +1,7 @@
 <?php
 $id_kecamatan = $_GET['id_kecamatan'];
 include ('koneksi.php');
-$delete = mysqli_query($connect,"delete from kec where id_kecamatan='$id_kecamatan'");
+$delete = mysqli_query($connect, "DELETE FROM kec WHERE id_kecamatan = '$id_kecamatan'");
 if ($delete){
     $status = "berhasil";
 }else{
