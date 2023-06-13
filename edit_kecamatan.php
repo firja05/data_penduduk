@@ -7,11 +7,11 @@ $kec = mysqli_fetch_array($query);
 <div class="container mt-5">
 <h3>Edit Data Kecamatan</h3>
 <form action="update_kecamatan.php" method="post">
-<tr>
-                <td></td>
-                <td><input type="hidden" name="id_kecamatan" value="<?php echo $kec['id_kecamatan']?>" placeholder="ID" class="form-control"></td>
-            </tr>  
 <table class="table table-striped table-bordered table-secondary" style="font-family: Arial, sans-serif;">
+            <tr>
+            <td>ID Kecamatan</td>
+                <td><input type="text" name="id_kecamatan" value="<?php echo $kec['id_kecamatan']?>" placeholder="ID" class="form-control"></td>
+            </tr>  
           <tr>
                 <td>Kecamatan</td>
                 <td><input type="text" name="nama_kecamatan" value="<?php echo $kec['nama_kecamatan']?>" placeholder="Kecamatan" class="form-control"></td>
