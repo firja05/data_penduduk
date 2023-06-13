@@ -1,18 +1,22 @@
 <?php
-$id_kecamatan        = $_POST['id_kecamatan'];
-$nama_kecamatan      = $_POST['nama_kecamatan'];
- 
+include 'koneksi.php';
 
-include ('koneksi.php');
-$query = "INSERT INTO kec(id_kecamatan, nama_kecamatan)
-VALUES('$id_kecamatan', '$nama_kecamatan')";
-$insert = mysqli_query($connect,$query);
+if (isset($_POST['id_kecamatan']) && isset($_POST['nama_kecamatan']) && isset($_POST['selected_kabupaten'])) {
+  $id_kecamatan = $_POST['id_kecamatan'];
+  $nama_kecamatan = $_POST['nama_kecamatan'];
+  $selected_kabupaten = $_POST['selected_kabupaten'];
 
-if ($insert){
-    $status = "berhasil";
+  $query = "INSERT INTO kec (id_kecamatan, nama_kecamatan, id_kabupaten) VALUES ('$id_kecamatan', '$nama_kecamatan', '$selected_kabupaten')";
 
-}else{
-    $status = "gagal";
+  if (mysqli_query($connect, $query)) {
+    header("Location: tambah_kecamatan.php?status=berhasil");
+    exit;
+  } else {
+    header("Location: tambah_kecamatan.php?status=gagal");
+    exit;
+  }
+} else {
+  header("Location: tambah_kecamatan.php?status=gagal");
+  exit;
 }
-header("location:kecamatan.php?status=".$status);   
 ?>
