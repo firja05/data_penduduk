@@ -1,7 +1,16 @@
+<style>
+  .alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    z-index: 9999;
+  }
+</style>
+
 <?php include 'header.php'?>
 
-<div class="container mt-5">
-<h3>Tambah Kabupaten</h3>
 <?php if (isset($_GET['status'])) : ?>
     <?php if ($_GET['status'] === 'berhasil') : ?>
       <div id="success-alert" class="alert alert-success" role="alert">
@@ -13,6 +22,9 @@
       </div>
       <?php endif; ?>
   <?php endif; ?>
+
+<div class="container mt-5">
+<h3>Tambah Kabupaten</h3>
 <form action="simpan_kabupaten.php" method="post">
     <table class="table table-striped table-bordered table-secondary" style="font-family: Arial, sans-serif;">
             <tr>
