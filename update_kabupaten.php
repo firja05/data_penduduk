@@ -14,5 +14,5 @@ if ($update){
 }else{
     $status = "gagal";
 }
-header("location:kabupaten.php?status=".$status);   
+header("location:edit_kabupaten.php?status=".$status."&id_kabupaten=".$id_kabupaten);   
 ?>
