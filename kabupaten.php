@@ -30,9 +30,26 @@
                         <a href="edit_kabupaten.php?id_kabupaten=<?php echo $row['id_kabupaten'];?>" class="btn btn-info">
                         <i class="bi bi-pencil-square"></i>
                         </a>
-                        <a href="delete_kabupaten.php?id_kabupaten=<?php echo $row['id_kabupaten'];?>" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['id_kabupaten']; ?>">
                             <i class="bi bi-trash-fill"></i>
-                        </a>
+                        </button>
+                        <div class="modal fade" id="deleteModal<?php echo $row['id_kabupaten']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data Kabupaten</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah Anda yakin ingin menghapus Kabupaten <?php echo $row['nama_kabupaten']; ?>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <a href="delete_kabupaten.php?id_kabupaten=<?php echo $row['id_kabupaten']; ?>" class="btn btn-danger">Hapus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                     </tr>
             <?php 
