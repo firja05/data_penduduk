@@ -1,9 +1,34 @@
+<style>
+  .alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    z-index: 9999;
+  }
+</style>
+
 <?php include 'header.php';
 
 $id_kabupaten = $_GET['id_kabupaten'];
 $query = mysqli_query($connect,"select * from kab where id_kabupaten='$id_kabupaten'");
 $kab = mysqli_fetch_array($query);
-//print_r($pengguna);?>
+?>
+
+    <?php if (isset($_GET['status'])) : ?>
+    <?php if ($_GET['status'] === 'berhasil') : ?>
+      <div id="success-alert" class="alert alert-success" role="alert">
+        Data Berhasil Diupdate!
+      </div>
+    <?php elseif ($_GET['status'] === 'gagal') : ?>
+      <div id="error-alert" class="alert alert-danger" role="alert">
+       Data gagal Diupdate!
+
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+
 <div class="container mt-5">
 <h3>Edit Data Kabupaten</h3>
 <form action="update_kabupaten.php" method="post">
@@ -23,4 +48,23 @@ $kab = mysqli_fetch_array($query);
     </div>
         </from>
 </div>
+
+<script>
+  // Hide success alert after 2 seconds
+  setTimeout(function() {
+    var successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+      successAlert.style.display = 'none';
+    }
+  }, 2000);
+
+  // Hide error alert after 2 seconds
+  setTimeout(function() {
+    var errorAlert = document.getElementById('error-alert');
+    if (errorAlert) {
+      errorAlert.style.display = 'none';
+    }
+  }, 2000);
+  </script>
+
 <?php include 'footer.php'?>
