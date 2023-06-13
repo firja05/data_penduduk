@@ -15,5 +15,5 @@ if ($update){
 }else{
     $status = "gagal";
 }
-header("location:list_pengguna.php?status=".$status);   
+header("location:edit_pengguna.php?status=".$status."&id=".$id);   
 ?>
