@@ -24,6 +24,6 @@ if (isset($_POST['id_kecamatan']) && isset($_POST['nama_kecamatan']) && isset($_
         $status = "gagal";
     }
 
-    header("location:tambah_kecamatan.php?status=" . $status);
+    header("location:tambah_kecamatan.php?status=".$status);
 }
 ?>
