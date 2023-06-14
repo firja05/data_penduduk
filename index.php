@@ -3,14 +3,26 @@
 <style>
   .alert {
     position: absolute;
-    top: 0;
+    top: 70;
     left: 0;
     right: 0;
     margin-top: 10px;
     z-index: 9999;
   }
 </style>
- 
+
+<?php if (isset($_GET['status'])) : ?>
+  <?php if ($_GET['status'] === 'berhasil_login') : ?>
+    <div id="success-alert-login" class="alert alert-success" role="alert">
+      Login Berhasil!
+    </div>
+  <?php elseif ($_GET['status'] === 'gagal_login') : ?>
+    <div id="error-alert-login" class="alert alert-danger" role="alert">
+      Login Gagal. Username atau Password salah.
+    </div>
+  <?php endif; ?>
+<?php endif; ?>
+
 <?php if (isset($_GET['status'])) : ?>
   <?php if ($_GET['status'] === 'berhasil') : ?>
     <div id="success-alert" class="alert alert-danger" role="alert">
@@ -40,7 +52,7 @@
     <table class="table table-bordered table-striped table-secondary" style="font-family: Arial, sans-serif;">
       <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>    
+          <th scope="col">#</th>
           <th scope="col">NIK</th>
           <th scope="col">Nama</th>
           <th scope="col">Kabupaten/Kota</th>
@@ -64,7 +76,7 @@
           $penduduk = mysqli_query($connect, "SELECT p.*, k.nama_kabupaten, c.nama_kecamatan, d.nama_pekerjaan FROM penduduk AS p JOIN kab AS k ON p.id_kabupaten = k.id_kabupaten JOIN kec AS c ON p.id_kecamatan = c.id_kecamatan JOIN pekerjaan AS d ON p.id_pekerjaan = d.id_pekerjaan");
         }
         while ($row = mysqli_fetch_array($penduduk)) {
-        ?>
+          ?>
           <tr>
             <td><?php echo $nomor; ?></td>
             <td><?php echo $row['nik']; ?></td>
@@ -76,7 +88,7 @@
             <td><?php echo $row['nama_pekerjaan']; ?></td>
             <td>
               <a href="edit_penduduk.php?nik=<?php echo $row['nik']; ?>" class="btn btn-info">
-                <i class="bi bi-person-fill-gear"></i>  
+                <i class="bi bi-person-fill-gear"></i>
               </a>
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['nik']; ?>">
                 <i class="bi bi-trash-fill"></i>
@@ -108,5 +120,30 @@
     </table>
   </div>
 </div>
+<script>
+  // Hide success alert after 2 seconds
+  setTimeout(function() {
+    var successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+      successAlert.style.display = 'none';
+    }
+  }, 2000);
+
+  // Hide error alert after 2 seconds
+  setTimeout(function() {
+    var errorAlert = document.getElementById('error-alert');
+    if (errorAlert) {
+      errorAlert.style.display = 'none';
+    }
+  }, 2000);
+</script>
+
+<script>
+  // Menghilangkan notifikasi setelah beberapa detik
+  setTimeout(function() {
+    document.getElementById("success-alert-login").style.display = "none";
+    document.getElementById("error-alert-login").style.display = "none";
+  }, 3000); // Notifikasi akan hilang setelah 5 detik (5000 ms)
+</script>
 
 <?php include 'footer.php' ?>
