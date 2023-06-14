@@ -1,3 +1,4 @@
+  
 <style>
   .alert {
     position: absolute;
@@ -10,6 +11,7 @@
 </style>
 
 <?php include 'header.php'?>
+
 
 <?php if (isset($_GET['status'])) : ?>
     <?php if ($_GET['status'] === 'berhasil') : ?>
